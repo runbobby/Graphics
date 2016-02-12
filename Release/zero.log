@@ -1,6 +1,0 @@
-﻿  main.cpp
-main.cpp(114): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-main.cpp(114): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-main.cpp(93): warning C4101: 'i': unreferenced local variable
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
-  zero.vcxproj -> C:\Users\Bobby\Documents\zero\Release\zero.exe
