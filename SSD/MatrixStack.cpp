@@ -4,7 +4,7 @@
 ///but was also useful for BWTJT and CJTWT
 ///One could imagine a stack that multiplies in the other direction, but it was not needed here
 ///Theoretically, this class enables certain independent animations for multiple SSD models, but
-///this was not exploted here.
+///this was not explored here.
 
 MatrixStack::MatrixStack() : m_matrices(1, Matrix4f::identity())
 {
