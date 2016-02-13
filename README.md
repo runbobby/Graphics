@@ -22,7 +22,8 @@ World Space: what the skeleton looks like in the world given the current state.
 Joint Space: A local coordinate system in which the joint is at the origin. Points on the skin which are exclusively attached to that joint have a constant location in joint space. For example, the forearm has a constant location in the joint space of the elbow. The Joint to World Transform is a function of the current state (of rotations) and is calculated recursively after each input update, using my own matrix stack. The transform from one node's joint space to its parent is a function of the length (fixed) and the input angles. Both are stored with the joint.
 Bind Space: The location of the skin mesh in one fixed pose, given in the obj file. It is necessary to compute the Bind to Joint Transform once. This is stored with the joint.
 Joints have fixed length. The joints form a rooted tree. The sliders allow one to control the rotation of one node's joint space to its parent's. 
------------------------
+
+
 
 Simulation: Physical Simulation of some systems with numerical integration
 
