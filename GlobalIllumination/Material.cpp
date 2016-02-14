@@ -326,7 +326,7 @@ Vector3f Material::radiance(const Departure& d, const Vector3f& outgoing)
 	float c2 = absorbRatio[w-39];
 	float c1 = diffuseRatio[w - 39];
 	float c3 = 1 - c1 - c2; ///sum specular, transmission ratio
-	c1 = c1 / (1 - c2);
+	c1 = c1 / (1 - c2); ///I should have c1 = c1/(2 Pi) so that the hemispherical integral is 1, but I can't get the parameters right yet.
 	c3 = c3 / (1 - c2);
 	if (bCoefficient < 0)
 	{///non transparent case

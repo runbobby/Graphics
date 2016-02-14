@@ -1,0 +1,83 @@
+﻿  CubeMap.cpp
+CubeMap.cpp(30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Image.cpp
+Image.cpp(49): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+Image.cpp(109): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Image.cpp(83): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+Image.cpp(125): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+Image.cpp(172): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Image.cpp(150): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+Image.cpp(160): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: see declaration of 'sscanf'
+Image.cpp(256): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+Image.cpp(272): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+  main.cpp
+main.cpp(98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+main.cpp(102): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+main.cpp(276): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+main.cpp(143): warning C4101: 'a': unreferenced local variable
+  Mesh.cpp
+Mesh.cpp(15): warning C4800: 'void *': forcing value to bool 'true' or 'false' (performance warning)
+Mesh.cpp(46): warning C4800: 'void *': forcing value to bool 'true' or 'false' (performance warning)
+Mesh.cpp(60): warning C4800: 'void *': forcing value to bool 'true' or 'false' (performance warning)
+  Noise.cpp
+Noise.cpp(6): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+Noise.cpp(7): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  octree.cpp
+  PerlinNoise.cpp
+  SampleRay.cpp
+  SceneParser.cpp
+SceneParser.cpp(48): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+SceneParser.cpp(129): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+SceneParser.cpp(513): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+SceneParser.cpp(515): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+SceneParser.cpp(517): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+SceneParser.cpp(522): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+SceneParser.cpp(612): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+SceneParser.cpp(627): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1193): note: see declaration of 'fscanf'
+SceneParser.cpp(638): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1193): note: see declaration of 'fscanf'
+SceneParser.cpp(649): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1193): note: see declaration of 'fscanf'
+SceneParser.cpp(660): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1193): note: see declaration of 'fscanf'
+SceneParser.cpp(671): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1193): note: see declaration of 'fscanf'
+  Group.cpp
+  PerspectiveCamera.cpp
+  Material.cpp
+Material.cpp(289): warning C4305: 'argument': truncation from 'double' to 'float'
+  Plane.cpp
+  LightSource.cpp
+  SamplePhoton.cpp
+  Rectangle.cpp
+  3dtree.cpp
+3dtree.cpp(38): warning C4018: '<': signed/unsigned mismatch
+3dtree.cpp(53): warning C4018: '<': signed/unsigned mismatch
+3dtree.cpp(177): warning C4018: '<': signed/unsigned mismatch
+3dtree.cpp(269): warning C4018: '<': signed/unsigned mismatch
+  Departure.cpp
+  Transform.cpp
+  Triangle.cpp
+  Generating Code...
+  Compiling...
+  Sphere.cpp
+  texture.cpp
+  Matrix2f.cpp
+  Matrix3f.cpp
+  Matrix4f.cpp
+  Quat4f.cpp
+  Vector2f.cpp
+  Vector3f.cpp
+  Vector4f.cpp
+  Generating Code...
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
+  a4.vcxproj -> C:\Users\Bobby\Documents\6837\assignments\IThinkMyGitRepoIsHere\GlobalIllumination\Release\a4.exe

@@ -31,12 +31,12 @@ int main( int argc, char* argv[] )
 	int width = 200;
 	int height = 200;
 	char* output_filename;
-	char* depth_filename;
+	/*char* depth_filename;
 	bool depth_used = false;
 	float depth_min=1;
 	float depth_max=10;
 	char* normals_filename;
-	bool normals_used = false;
+	bool normals_used = false;/**/
 	int bounces = 4;
 	int samples = 10; // samples (trials) per pixel in supersample OR a related multiplier when photon mapping
 	int neighbors = 100;
@@ -60,7 +60,7 @@ int main( int argc, char* argv[] )
 		{
 			output_filename = argv[argNum + 1];
 		}
-		if (!strcmp(argv[argNum], "-depth"))
+		/*if (!strcmp(argv[argNum], "-depth"))
 		{
 			depth_min = stof(argv[argNum + 1]);
 			depth_max = stof(argv[argNum + 2]);
@@ -71,7 +71,7 @@ int main( int argc, char* argv[] )
 		{
 			normals_filename = argv[argNum + 1];
 			normals_used = true;
-		}
+		}/**/
 		if (!strcmp(argv[argNum], "-bounces"))
 		{
 			//int temp = stoi(argv[argNum + 1]);
@@ -86,12 +86,9 @@ int main( int argc, char* argv[] )
 		{
 			photonMultiplier = stof(argv[argNum + 1]);
 		}
-		if (!strcmp(argv[argNum], "-method"))
+		if (!strcmp(argv[argNum], "-PhotonMapping"))
 		{
-			if (strcmp((argv[argNum+1]), "mc"))
-			{
 				MCRayTracing = false;
-			}
 		}
 		if (!strcmp(argv[argNum], "-neighbors"))
 		{
@@ -346,8 +343,8 @@ int main( int argc, char* argv[] )
 		image.SaveImage(output_filename);
 	}
 
-	if (depth_used) { imaged.SaveImage(depth_filename); }
-	if (normals_used) { imagen.SaveImage(normals_filename); }
+	//if (depth_used) { imaged.SaveImage(depth_filename); }
+	//if (normals_used) { imagen.SaveImage(normals_filename); }
 	std::cout << "Done.";
 	///pause
 	std::cin >> height;
