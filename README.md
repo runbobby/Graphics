@@ -4,7 +4,9 @@ Bobby Shen (Robert)
 
 Here are some graphics projects I have worked on, written in MSVC++ 2010 or 2015. Currently, this majority of this repository is the assignments from the 6.837 course on MIT's OCW (from Fall 2012). The 'starter code' for these assignments consists of many structural elements or algorithms that deal with hardware, such as the structure of an OpenGL program, an arcball camera, some parsers, some class headers, some complete vector and matrix classes, object/scene descriptions in text, an acceleration structure, and so on. See http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-837-computer-graphics-fall-2012/assignments/ (VC++ 2010, specifically). I have completed the rest myself. I decided not to upload assignments 0 and 1.
 
-In general, my comments use ///, and the comments from the starter code use //. Some projects may require one to disable incremental linking. Every project is in VC++ 2015 except SSD. Often, we use homogeneous coordinates to represent 3d translations as 4d matrices
+In general, my comments use ///, and the comments from the starter code use //. Some projects may require one to disable incremental linking. Every project is in VC++ 2015 except SSD. To directly run an .exe, move it from the release/debug folder into the main folder.
+
+The files a2soln.exe a3soln.exe a4soln.exe are sample solutions from the OCW (with no source code)
 
 Some specifics of each project:
 
