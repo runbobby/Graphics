@@ -20,6 +20,8 @@ public:
 	vector<Vector3f> evalF(vector<Vector3f> state);
 	
 	void draw();
+
+	void setParameters(float springk, float rest_length, float gravity, float drag, float mass);
 	
 };
 

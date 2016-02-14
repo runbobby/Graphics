@@ -5,13 +5,13 @@
 #include <vector>
 #include "particleSystem.h"
 
+///updates particleSystem's state vector to the estimation of its state after a time step of stepSize
 class TimeStepper
 {
 public:
 	virtual void takeStep(ParticleSystem* particleSystem,float stepSize)=0;
 };
 
-//IMPLEMENT YOUR TIMESTEPPERS
 
 class ForwardEuler:public TimeStepper
 {

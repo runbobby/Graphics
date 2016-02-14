@@ -21,12 +21,13 @@ public:
 	void draw();
 	void moveCorner(Vector3f v);
 	void incrementCorner();
+	void setParameters(float mass, float gravity, float drag, float structurek, float sheark, float flexionk);
 
 
 private:
-	int height, width; //should be at least 2
+	int height, width; ///should be at least 2
 	float dx, mass, gravity, drag, structurek, sheark, flexionk;
-	int corner_x_scale; // integer [0-110]
+	int corner_x_scale; ///integer [25-195]. 110-|c-110| is the horizontal distance between the endpoints as a proportion of the rest length
 };
 
 

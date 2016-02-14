@@ -15,8 +15,6 @@
 #include "camera.h"
 
 
-///TODO: include more headers if necessary
-
 #include "TimeStepper.hpp"
 #include "simpleSystem.h"
 #include "pendulumSystem.h"
@@ -35,73 +33,69 @@ namespace
 	int system_type;
 
   // initialize your particle systems
-  void initSystem(int argc, char * argv[])
-  {
-	  if(argc<2)
-	  {
-		  cout << "usage: filename integrator_type [time step = .04f] \n integrator_type is e (ForwardEuler), t (Trapezoidal), or r/anything else (RK4)";
-	  }
-	  else 
-	  {
-		  cout << "Program usage: while in the GUI, type t to switch the type of simulation. Enter field as needed in the console. s: Enter step size of simulation; i: Enter integration system; d: Enter delay (Time between renders)." << endl;
-		if(argv[1][0] == 'e'){timeStepper = new ForwardEuler(); /*cout<<"Euler";*/}
-		else{
-			if(argv[1][0] == 't'){timeStepper = new Trapezoidal(); /*cout<<"Trap";*/}
-			else{timeStepper = new RK4(); /*cout<<"RK4";*/}
+	void initSystem(int argc, char * argv[])
+	{
+		if (argc < 2)
+		{
+			//cout << "usage: filename integrator_type [time step = .04f] \n integrator_type is e (ForwardEuler), t (Trapezoidal), or r/anything else (RK4)";
+			step = .04f; timeStepper = new RK4(); 
 		}
-		if(argc == 2){step = .04f;}
 		else
 		{
-			stringstream ss(argv[2]);
-			float f=0.04f; 
-			ss>>f;
-			step = f;
+			if (argv[1][0] == 'e') { timeStepper = new ForwardEuler(); /*cout<<"Euler";*/ }
+			else {
+				if (argv[1][0] == 't') { timeStepper = new Trapezoidal(); /*cout<<"Trap";*/ }
+				else { timeStepper = new RK4(); /*cout<<"RK4";*/ }
+			}
+			if (argc == 2) { step = .04f; }
+			else
+			{
+				stringstream ss(argv[2]);
+				float f = 0.04f;
+				ss >> f;
+				step = __min(.000001f, abs(f)); ///avoid errors
+			}
 		}
-		//cout<<step;
-	  }
-			  
-    // seed the random number generator with the current time
-    srand( time( NULL ) );
+		cout << "Program usage: while in the GUI, type t to cycle through the types of simulation. Enter field as needed in the console. s: Enter step size of simulation; i: Enter integration system; d: Enter delay (milliseconds between frames added to computation time)." << endl;
 
-	system_type = 0;
-	system = new SimpleSystem;
-    //system = new PendulumSystem(7);
-	//system = new ClothSystem(50,50);
-  }
+		// seed the random number generator with the current time
+		srand(time(NULL));
+
+		system_type = 0;
+		system = new SimpleSystem;
+	}
 
   // Take a step forward for the particle shower
-  ///TODO: Optional. modify this function to display various particle systems
-  ///and switch between different timeSteppers
-  void stepSystem()
-  {
-    if(timeStepper!=0){
-      timeStepper->takeStep(system,step);
-    }
-  }
+	void stepSystem()
+	{
+		if (timeStepper != 0) {
+			timeStepper->takeStep(system, step);
+		}
+	}
 
   // Draw the current particle positions
-  void drawSystem()
-  {
-    
-    // Base material colors (they don't change)
-    GLfloat particleColor[] = {0.4f, 0.7f, 1.0f, 1.0f};
-    GLfloat floorColor[] = {1.0f, 0.0f, 0.0f, 1.0f};
-    
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, particleColor);
-    
-    glutSolidSphere(0.1f,10.0f,10.0f);
-    
-    system->draw();
-    
-    
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
-    glPushMatrix();
-    glTranslatef(0.0f,-5.0f,0.0f);
-    glScaled(50.0f,0.01f,50.0f);
-    glutSolidCube(1);
-    glPopMatrix();
-    
-  }
+	void drawSystem()
+	{
+
+		// Base material colors (they don't change)
+		GLfloat particleColor[] = { 0.4f, 0.7f, 1.0f, 1.0f };
+		GLfloat floorColor[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, particleColor);
+
+		glutSolidSphere(0.1f, 10.0f, 10.0f);
+
+		system->draw();
+
+
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
+		glPushMatrix();
+		glTranslatef(0.0f, -5.0f, 0.0f);
+		glScaled(50.0f, 0.01f, 50.0f);
+		glutSolidCube(1);
+		glPopMatrix();
+
+	}
 
         
 
@@ -124,10 +118,19 @@ namespace
     void drawScene(void);
     void initRendering();
 
+
+
     // This function is called whenever a "Normal" key press is
     // received.
+	///Update certain methods such as m, p if one adds modes
+	///I am not very good at cleaning up input elegantly
+	///I should probably update the constexprs to an enum class if I get around to it
     void keyboardFunc( unsigned char key, int x, int y )
     {
+		constexpr int numberOfModes = 3;
+		constexpr int simpleMode = 0;
+		constexpr int pendulumMode = 1;
+		constexpr int clothMode = 2;
         switch ( key )
         {
         case 27: // Escape key
@@ -144,44 +147,39 @@ namespace
 		{
 			system_type++; 
 			delete system;
-			if(system_type%3==0){system = new SimpleSystem;}
+			if (system_type == numberOfModes) { system_type = 0; system = new SimpleSystem; }
 			else {
-				if(system_type%3==1){
-				cout<<"Enter number of particles in pendulum string: "; 
-				int n = 2;
-				string a;
-				cin>>a;
-				stringstream ss(a);
-				ss>>n;
-				cout<<endl;
-				system = new PendulumSystem(n);
-				//cout<<"test";
+				if (system_type == pendulumMode) { ///next is pendulum
+					cout << "\nEnter number of particles in pendulum string: ";
+					int n = 2;
+					string a;
+					std::getline(cin, a);
+					stringstream ss(a);
+					ss >> n;
+					cout << endl;
+					system = new PendulumSystem(__max(2, n)); ///avoid errors
+					cout << "Press 'p' to set parameters. \n";
+					//cin.clear();
+					//cin.ignore(INT_MAX, '\n');
 				}
-			else{
-				cout <<"Enter number of particles across and down in cloth system, separated by a space:";
-				int h=30; int w=30;
-				string a;
-				cin>>a;
-				stringstream ss(a);
-				ss>>w;
-				cin>>a;
-				stringstream ss2(a);
-				ss2>>h;
-				cout<<endl<<"Type 'm' to teleport one corner of the cloth. I know this is not very elegant" << endl;
-				system = new ClothSystem(h, w);
+				else { ///next is cloth
+					cout << "Enter number of particles across and down in cloth system as two ints in one line:";
+					int h = 30; int w = 30;
+					string a;
+					std::getline(cin, a);
+					stringstream ss(a);
+					ss >> w >> h;
+					cout << "Press 'm' to teleport one corner of the cloth. I know this is not very elegant. Press 'p' to set parameters \n";
+					system = new ClothSystem(__max(2,h), __max(2,w)); ///avoid errors
+					//cin.clear();
+					//cin.ignore(INT_MAX, '\n');
+				}
 			}
-			}
-			//cin.clear();
-			//std::cin.ignore(INT_MAX,' ');
-			//cout<<"test2";
 			break;
 		}
 		case 'm':
 		{
-			if(system_type%3==2)
-			{
-			static_cast<ClothSystem*>(system)->incrementCorner();
-			}
+			if (system_type = clothMode) { static_cast<ClothSystem*>(system)->incrementCorner(); }
 			break;
 		}
 		case 's':
@@ -189,48 +187,93 @@ namespace
 				cout<<"Enter step size: ";
 				float t;
 				string a;
-				cin>>a;
+				std::getline(cin, a);
 				stringstream ss(a);
 				ss>>t;
-				if(t<=0){cout << "Input is not positive. Ignored";}
+				if (t <= 0) { cout << "Input is not positive. Ignored"; }
 				else step=t;
 				cout << endl;
+				//cin.clear();
+				//cin.ignore(INT_MAX, '\n');
 				break;
 			}
 		case 'i':
 			{
-				cout<<"Enter integration type: e, t, or r: ";
+				cout<<"\nEnter integration type: e, t, or r: ";
 				char c = 'r';
 				string a;
-				cin>>a;
+				std::getline(cin, a);
 				stringstream ss(a);
 				ss>>c;
 				delete timeStepper;
 				if(c == 'e'){cout << "Now using Forward Euler integration. \n"; timeStepper = new ForwardEuler();}
 				if(c == 't'){cout << "Now using Trapezoidal integration. \n"; timeStepper = new Trapezoidal();}
 				if(c != 'e' && c != 't'){cout << "Now using Runge Kutta integration. \n"; timeStepper = new RK4();}
+				//cin.clear();
+				//cin.ignore(INT_MAX, '\n');
 				break;
 			}
 		case 'd':
 		{
-			cout<<"Enter delay in milliseconds. Possibly limited by simulation speed. ";
-				int t=0;
-				string a;
-				cin>>a;
-				stringstream ss(a);
-				ss>>t;
-				if(t<=0){cout << "Input is not a positive integer. Ignored";}
-				else delay=t;
-				cout << endl;
-				break;
+			cout << "\nEnter delay in milliseconds (int) in addition to calculation speed. ";
+			int t = 0;
+			string a;
+			std::getline(cin, a);
+			stringstream ss(a);
+			ss >> t;
+			if (t <= 0) { cout << "Input is not a positive integer. Ignored. "; }
+			else delay = t;
+			cout << endl;
+			//cin.clear();
+			//cin.ignore(INT_MAX, '\n');
 			break;
 		}
-		case 'r':
+		/*case 'r':
 			{
 				glutPostRedisplay();
 				break;
+			}/**/
+		case 'p':
+		{
+			if (system_type == simpleMode) { cout << "No parameters to set.\n"; break; }
+			if (system_type == clothMode) ///Cloth
+			{
+				cout << "\nEnter the following parameters as floats in order as one line. Enter 0 to leave that parameter unchanged: mass, gravity, drag, structurek, sheark, flexionk: ";
+				///input
+				float mass = 0, gravity = 0, drag = 0, structurek = 0, sheark = 0, flexionk = 0;
+				char buffer[255];
+				cin.getline(buffer, 255);
+				stringstream ss(buffer);
+				ss >> mass;
+				ss >> gravity;
+				ss >> drag;
+				ss >> structurek;
+				ss >> sheark;
+				ss >> flexionk;
+				static_cast<ClothSystem*>(system)->setParameters(mass, gravity, drag, structurek, sheark, flexionk);
+				//cin.clear();
+				//cin.ignore(INT_MAX, '\n');
+				break;
 			}
-
+			if (system_type == pendulumMode) ///Pendulum
+			{
+				cout << "\nEnter the following parameters as floats in order. Enter 0 to leave that parameter unchanged: springk, rest_length, gravity, drag, mass: ";
+				///input
+				float springk = 0, rest_length = 0, gravity=0, drag = 0, mass = 0;
+				char buffer[255];
+				cin.getline(buffer, 255);
+				stringstream ss(buffer);
+				ss >> springk;
+				ss >> rest_length;
+				ss >> gravity;
+				ss >> drag;
+				ss >> mass;
+				static_cast<PendulumSystem*>(system)->setParameters(springk, rest_length, gravity, drag, mass);
+				//cin.clear();
+				//cin.ignore(INT_MAX, '\n');
+				break;
+			}
+		}
         default:
             cout << "Unhandled key press " << key << "." << endl;        
         }
