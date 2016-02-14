@@ -2,6 +2,8 @@
 
 Bobby Shen (Robert)
 
+Note: There are shorter READMEs in each folder which give input and some condensed notes.
+
 Here are some graphics projects I have worked on, written in MSVC++ 2010 or 2015. Currently, this majority of this repository is the assignments from the 6.837 course on MIT's OCW (from Fall 2012). The 'starter code' for these assignments consists of many structural elements or algorithms that deal with hardware, such as the structure of an OpenGL program, an arcball camera, some parsers, some class headers, some complete vector and matrix classes, object/scene descriptions in text, an acceleration structure, and so on. See http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-837-computer-graphics-fall-2012/assignments/ (VC++ 2010, specifically). I did not change the started code except to set (0,0,0) normalized equal to (0,0,1) in some places (See Vector3f::normalized()). I have completed the rest myself. I decided not to upload assignments 0 and 1.
 
 In general, my comments use ///, and the comments from the starter code use //. However, I commonly comment out test lines with // or /**/. Some projects may require one to disable incremental linking. Every project is in VC++ 2015 except SSD. To directly run an .exe, move it from the release/debug folder into the main folder. Alternatively, debug in Visual Studio, and recall that the one should not rewrite the file name as command line arguments in the project properties. Some of the programs stay open with a cin>>(int). Just enter anything.
