@@ -95,7 +95,3 @@ My sampling method: As we map a particular photon, we keep track of when a photo
 The nearest neighbors uses a 3d tree with partitioning according to which of the x range, y range, or z range is highest. 
 
 Unfortunately, the nearest neighbors is really slow. I realize that one could just cast rays from each departure to the camera and increment the corresponding color value of the pixel. I have not done so for a few reasons (which are not particularly compelling, but oh well): This could be okay for more complex scenes, there could be less noise once I have a good interpolation method, and I wanted to demonstrate that I could write such a structure.
-
-Some final notes: I drew a rainbow! On that note, observe that the color boundaries can now be much different than object boundaries, so I really need to study my interpolation to speed up this algorithm!
-
-
