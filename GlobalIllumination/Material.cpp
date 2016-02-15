@@ -20,13 +20,14 @@ Vector3f Material::Shade( const Ray& ray, const Hit& hit, const Vector3f& dirToL
 	else{kd = this->diffuseColor;}
 	Vector3f n = hit.getNormal().normalized();
 	
-	//Diffuse Shading
+	///Diffuse + Specular Shading
 	
 	if(noise.valid())
 	{
 		kd = noise.getColor(ray.getOrigin()+ray.getDirection()*hit.getT());
 	}
-	Vector3f color = clampedDot( dirToLight ,n )*pointwiseDot( lightColor , kd);
+	Vector3f outgoing = ray.getDirection() + 2 * n * Vector3f::dot(n, ray.getDirection());
+	Vector3f color = clampedDot(dirToLight, n)*(lightColor*kd) + specularColor * lightColor * std::pow(clampedDot(outgoing, dirToLight), shininess) / shininess;
 	return color;
 }
 
@@ -179,13 +180,13 @@ bool Material::interactPhoton(const Ray& incoming, const Hit& hit, Ray& outgoing
 	float tt = hit.getT();
 	Vector3f i = incoming.getDirection();
 	Vector3f normal = hit.getNormal();
-	bool outside = Vector3f::dot(i, normal)<0;//True: From outside. False: from inside
+	bool outside = Vector3f::dot(i, normal)<0;///True: From outside. False: from inside
 	Vector3f position = incoming.pointAtParameter(tt);
 	float c1 = diffuseRatio[w-39];
 	float c2 = c1 + absorbRatio[w-39];
 
 	float random = (float) rand()/RAND_MAX;
-	if(random <= c1) // reflected diffusely
+	if(random <= c1) /// reflected diffusely
 	{
 		d.colored=false;
 		d.isLight=false;

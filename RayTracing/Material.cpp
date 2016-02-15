@@ -18,7 +18,7 @@ Vector3f Material::Shade( const Ray& ray, const Hit& hit, const Vector3f& dirToL
 	else{kd = this->diffuseColor;}
 	Vector3f n = hit.getNormal().normalized();
 	
-	//Diffuse Shading + specular shading
+	///Diffuse Shading + specular shading
 	
 	if(noise.valid())
 	{

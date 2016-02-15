@@ -85,7 +85,7 @@ public:
 
 	LightSource* getLightSource(int i) const
 	{
-		assert(i >= 0 && i < num_LightSources);
+		assert(i >= 0 && i < num_lightSources);
 		return lightSources[i];
 	}
 

@@ -1,4 +1,0 @@
-﻿  main.cpp
-main.cpp(81): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
-  a4.vcxproj -> C:\Users\Bobby\Documents\6837\assignments\a4\distrib\Release\a4.exe
