@@ -22,6 +22,6 @@ Here is my sampling method for PM: for each Ray emitted, we bounce the Ray off a
 
 When gathering, we associate each Departure with a radiance, which corresponds to the radiance to the camera yielded by a ray of that wavelength, incoming direction, and normal according to the Phong model. 
 
-The wavelength is an int 39-70, which is in 10nm. Refraction index and diffuse/absorb ratios depend on wavelength. Thus this can produce rainbows.
+The wavelength is an int 39-70, which is in 10nm. Refraction index, diffuse/absorb ratios, and base RGB values depend on wavelength. Thus this algorithm can produce rainbows.
 
 I've only drawn a really basic scene for rainbows so far. I am planning to add interpolation methods to speed up rendering, to eventually render a diamond.
