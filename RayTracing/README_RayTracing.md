@@ -10,4 +10,4 @@ output: creates or writes output_filename.
 
 a4soln.exe, a5soln.exe are the solutions from the MIT OCW. I think a4soln only works with scenes 01-05 and 07-09. The images I've generated are those that don't end in a or b. The others are from the solutions. I have to admit that Scenes 1-9 were from a previous Ray Casting program, so I might not have updated everything correctly.
 
-Condensed design notes: Uses recursive ray tracing, the Phong model of materials, possibly some textures, supersampling/convolution/down-sampling for anti-aliasing
+Condensed design notes: Uses recursive ray tracing, the Phong model of materials, possibly some textures, some simple lights, shadow rays, a virtual Object3D class, supersampling/convolution/down-sampling for anti-aliasing
